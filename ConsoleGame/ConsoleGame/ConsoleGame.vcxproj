@@ -142,6 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Framework\App.c" />
+    <ClCompile Include="Input.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Renderer.c" />
     <ClCompile Include="Timer.c" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Framework\App.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Type.h" />

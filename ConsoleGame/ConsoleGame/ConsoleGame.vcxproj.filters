@@ -23,6 +23,9 @@
     <ClCompile Include="Timer.c">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Input.c">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\App.h">
@@ -34,6 +37,9 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
       <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>

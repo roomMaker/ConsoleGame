@@ -2,10 +2,16 @@
 #include "Common.h"
 #include "Renderer.h"
 #include "Timer.h"
+#include "Input.h"
 
 bool App_Init()
 {
     if (false == Renderer_Init())
+    {
+        return false;
+    }
+
+    if (false == Input_Init())
     {
         return false;
     }
@@ -15,45 +21,41 @@ bool App_Init()
 
 void processInput()
 {
-
+    Input_Update();
 }
 
 float elapsedTime;
 bool canShow = false;
+
+char str[128];
 void update()
 {
-    // 비례식
-    // 프레임 : 시간
-    // 1 : deltaTime = fps : 1
-    // 1 = deltaTime * fps
-    // fps = 1 / deltaTime
-    //char str[128] = "";
-    //sprintf_s(str, sizeof(str), "현재 FPS : %d", (int32)(1 / Timer_GetDeltaTime()));
-    //Renderer_DrawText(str, strlen(str));
-    elapsedTime += DELTA_TIME;
-    if (elapsedTime >= 0.5)
+    sprintf_s(str, sizeof(str), "현재 입력 없음");
+    
+    if (Input_GetKey(VK_UP))
     {
-        elapsedTime = 0.0f;
-        canShow = !canShow;
-        
+        sprintf_s(str, sizeof(str), "위쪽 화살표 눌림");
     }
-    if (canShow)
+    if (Input_GetKey(VK_DOWN))
     {
-        Renderer_DrawText("이 텍스트는 깜빡입니다.", sizeof("이 텍스트는 깜빡입니다."));
+        sprintf_s(str, sizeof(str), "아래쪽 화살표 눌림");
+    }
+
+    if (Input_GetKey(VK_LEFT) && Input_GetKey(VK_RIGHT))
+    {
+        sprintf_s(str, sizeof(str), "왼쪽, 오른쪽 화살표 동시에 눌림");
     }
     
-    // 0.5초마다 깜빡이는 텍스트를 만드시오.
-    // DeltaTime +=
-
     // short : 2바이트
     // 0000 0000 0000 0000 : 키가 떼진 상태 -> 0x0000
     // 1000 0000 0000 0000 : 키가 눌린 상태 -> 0x8000
     // 1000 0000 0000 0001 : 키가 계속 눌린 상태 -> 0x8001 (쓰기말기)
-    //GetAsyncKeyState();
+    
 }
 
 void render()
 {
+    Renderer_DrawText(str, strlen(str));
     Renderer_Flip();
 }
 
