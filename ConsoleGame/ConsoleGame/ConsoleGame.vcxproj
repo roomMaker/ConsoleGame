@@ -144,11 +144,13 @@
     <ClCompile Include="Framework\App.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Renderer.c" />
+    <ClCompile Include="Timer.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Framework\App.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
