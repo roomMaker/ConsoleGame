@@ -142,17 +142,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Framework\App.c" />
-    <ClCompile Include="Input.c" />
+    <ClCompile Include="Framework\Input.c" />
+    <ClCompile Include="Framework\Random.c" />
+    <ClCompile Include="Framework\Renderer.c" />
+    <ClCompile Include="Framework\Text.c" />
+    <ClCompile Include="Framework\Timer.c" />
+    <ClCompile Include="Game\Bullet.c" />
+    <ClCompile Include="Game\Gun.c" />
+    <ClCompile Include="Game\Player.c" />
+    <ClCompile Include="Game\Scene.c" />
     <ClCompile Include="Main.c" />
-    <ClCompile Include="Renderer.c" />
-    <ClCompile Include="Timer.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Framework\App.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Framework\Input.h" />
+    <ClInclude Include="Framework\Random.h" />
+    <ClInclude Include="Framework\Renderer.h" />
+    <ClInclude Include="Framework\Text.h" />
+    <ClInclude Include="Framework\Timer.h" />
+    <ClInclude Include="Game\Bullet.h" />
+    <ClInclude Include="Game\Gun.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Scene.h" />
+    <ClInclude Include="Macro.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

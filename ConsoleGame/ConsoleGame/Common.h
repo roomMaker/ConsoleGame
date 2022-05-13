@@ -13,3 +13,4 @@
 #include <Windows.h>
 
 #include "Type.h"
+#include "Macro.h"
