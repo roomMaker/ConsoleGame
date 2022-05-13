@@ -5,6 +5,7 @@
 #include "Framework/Input.h"
 #include "Framework/Renderer.h"
 #include "Framework/Timer.h"
+#include "Framework/Random.h"
 
 #include "Player.h"
 
@@ -155,28 +156,56 @@ void release_main(void)
 #pragma endregion
 
 #pragma region extraScene
+typedef struct tagExtraSceneData
+{
+	Text extraText[128];
+	int32 len;
+	COORD coord;
+}extraSceneData;
 void init_extra(void)
 {
+	g_Scene.Data = malloc(sizeof(extraSceneData));
 
+	extraSceneData* data = (extraSceneData*)g_Scene.Data;
+
+	TextCopy(data->extraText, L"GAME OVER", TEXT_COLOR_GREEN | TEXT_COLOR_BLUE | TEXT_COLOR_STRONG);
+	data->len = TextLen(data->extraText);
+	int32 x = Random_GetNumberFromRange(10, 30);
+	int32 y = Random_GetNumberFromRange(0, 15);
+	SetCoord(data->coord, x, y);
 }
 
 void update_extra(void)
 {
-	
+	extraSceneData* data = (extraSceneData*)g_Scene.Data;
 
+	static float elapsedTime = 0.0f;
+
+	elapsedTime += Timer_GetDeltaTime();
+	if (elapsedTime >= 0.2f)
+	{
+		elapsedTime = 0.0f;
+		int32 x = Random_GetNumberFromRange(10, 30);
+		int32 y = Random_GetNumberFromRange(0, 15);
+		SetCoord(data->coord, x, y);
+	}
+	
+	if (Input_GetKeyDown(VK_UP))
+	{
+		Scene_SetNextScene(SCENE_TITLE);
+	}
 }
 
 void render_extra(void)
 {
-	Text text[128];
-	TextCopy(text, L"GAME OVER", TEXT_COLOR_GREEN);
+	extraSceneData* data = (extraSceneData*)g_Scene.Data;
 	
-	Renderer_DrawText(text, TextLen(text), 20, 10);
+	Renderer_DrawText(data->extraText, data->len, data->coord.X, data->coord.Y);
 }
 
 void release_extra(void)
 {
-
+	SafeFree(g_Scene.Data);
 }
 #pragma endregion
 
